@@ -1,0 +1,444 @@
+{
+  "tests": [
+    {
+      "name": "ImageMaker() - Check if default sizes are 0",
+      "setup": "cmake .;make Constructor_Test",
+      "run": "timeout 2m ./Constructor_Test \"Constructor Tests\" -c \"ImageMaker() Test (default constructor)\" -c \"Check if default sizes are 0\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "ImageMaker() - Check default pen color is black",
+      "setup": "cmake .;make Constructor_Test",
+      "run": "timeout 2m ./Constructor_Test \"Constructor Tests\" -c \"ImageMaker() Test (default constructor)\" -c \"Check default pen color is black\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "ImageMaker() - Check if image matrix is initialized to white",
+      "setup": "cmake .;make Constructor_Test",
+      "run": "timeout 2m ./Constructor_Test \"Constructor Tests\" -c \"ImageMaker() Test (default constructor)\" -c \"Check if image matrix is initialized to white\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "ImageMaker(filename) - Test Check default pen color is black",
+      "setup": "cmake .;make Constructor_Test",
+      "run": "timeout 2m ./Constructor_Test \"Constructor Tests\" -c \"ImageMaker() Test (default constructor)\" -c \"Check if image matrix is initialized to white\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "ImageMaker(filename) - Test valid cake image",
+      "setup": "cmake .;make Constructor_Test",
+      "run": "timeout 2m ./Constructor_Test \"Constructor Tests\" -c \"ImageMaker() Test (default constructor)\" -c \"Test valid cake image\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 2
+    },
+    {
+      "name": "ImageMaker(filename) - Test valid block image",
+      "setup": "cmake .;make Constructor_Test",
+      "run": "timeout 2m ./Constructor_Test \"Constructor Tests\" -c \"ImageMaker() Test (default constructor)\" -c \"Test valid block image\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 2
+    },
+    {
+      "name": "ImageMaker(filename) - Test invalid header",
+      "setup": "cmake .;make Constructor_Test",
+      "run": "timeout 2m ./Constructor_Test \"Constructor Tests\" -c \"ImageMaker() Test (default constructor)\" -c \"Test invalid headers\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 4
+    },
+    {
+      "name": "Saving and Loading - Testing basic save functionality",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Testing basic save functionality\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Testing save with width 0",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Testing save with width 0\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test loading using cake.ppm",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test loading using cake.ppm\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test bad magic",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test bad magic\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test negative width",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test negative width\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test width > MAX_WIDTH",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test width > MAX_WIDTH\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test negative height",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test negative height\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test height > MAX_HEIGHT",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test height > MAX_HEIGHT\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test bad color max (should be 255)",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test bad color max (should be 255)\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Saving and Loading - Test bad pixel color",
+      "setup": "cmake .;make Save_Load_Test",
+      "run": "timeout 2m ./Save_Load_Test \"Saving and Loading Tests\" -c \"Test bad pixel color\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing invalid input for SetWidth",
+      "setup": "cmake .;make Getter_Setter_Test",
+      "run": "timeout 2m ./Getter_Setter_Test \"Getter/Setter Tests\" -c \"Testing invalid input for SetWidth\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing valid input for SetWidth",
+      "setup": "cmake .;make Getter_Setter_Test",
+      "run": "timeout 2m ./Getter_Setter_Test \"Getter/Setter Tests\" -c \"Testing valid input for SetWidth\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing invalid input for SetHeight",
+      "setup": "cmake .;make Getter_Setter_Test",
+      "run": "timeout 2m ./Getter_Setter_Test \"Getter/Setter Tests\" -c \"Testing invalid input for SetHeight\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing valid input for SetHeight",
+      "setup": "cmake .;make Getter_Setter_Test",
+      "run": "timeout 2m ./Getter_Setter_Test \"Getter/Setter Tests\" -c \"Testing valid input for SetHeight\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing Pen Color Functions",
+      "setup": "cmake .;make Getter_Setter_Test",
+      "run": "timeout 2m ./Getter_Setter_Test \"Getter/Setter Tests\" -c \"Testing Pen Color Functions\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 2
+    },
+    {
+      "name": "DrawPixel Testing Valid Input - Draw Test",
+      "setup": "cmake .;make DrawPixel_Test",
+      "run": "timeout 2m ./DrawPixel_Test \"Testing Draw Pixel\" -c \"Testing valid input\" -c \"Draw Test\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawPixel with negative x values",
+      "setup": "cmake .;make DrawPixel_Test",
+      "run": "timeout 2m ./DrawPixel_Test \"Testing Draw Pixel\" -c \"Testing DrawPixel with negative x values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawPixel with negative y values",
+      "setup": "cmake .;make DrawPixel_Test",
+      "run": "timeout 2m ./DrawPixel_Test \"Testing Draw Pixel\" -c \"Testing DrawPixel with negative y values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawPixel(0,0) with image width and height 0",
+      "setup": "cmake .;make DrawPixel_Test",
+      "run": "timeout 2m ./DrawPixel_Test \"Testing Draw Pixel\" -c \"Testing DrawPixel(0,0) with image width and height 0\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawLine with negative x1 values",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing DrawLine with negative x1 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawLine with negative x2 values",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing DrawLine with negative x2 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawLine with negative y1 values",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing DrawLine with negative y1 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawLine with negative y2 values",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing DrawLine with negative y2 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawLine with negative x1,y1 values",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing DrawLine with negative x1,y1 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawLine with negative x2,y2 values",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing DrawLine with negative x2,y2 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Test (x1,y1) == (x2,y2)",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Test (x1,y1) == (x2,y2)\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing vertical lines",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing vertical lines\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing typical use case (draw a house)",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing typical use case (draw a house)\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing coordinate order",
+      "setup": "cmake .;make DrawLine_Test",
+      "run": "timeout 2m ./DrawLine_Test \"Testing DrawLine\" -c \"Testing coordinate order\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawRectangle with negative x1 values",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Testing DrawRectangle with negative x1 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawRectangle with negative x2 values",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Testing DrawRectangle with negative x2 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawRectangle with negative y1 values",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Testing DrawRectangle with negative y1 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawRectangle with negative y2 values",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Testing DrawRectangle with negative y2 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawRectangle with negative x1,y1 values",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Testing DrawRectangle with negative x1,y1 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing DrawRectangle with negative x2,y2 values",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Testing DrawRectangle with negative x2,y2 values\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Test (x1,y1) == (x2,y2)",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Test (x1,y1) == (x2,y2)\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    },
+    {
+      "name": "Testing coordinate order",
+      "setup": "cmake .;make DrawRectangle_Test",
+      "run": "timeout 2m ./DrawRectangle_Test \"Testing DrawRectangle\" -c \"Testing coordinate order\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 1
+    }
+  ]
+}
