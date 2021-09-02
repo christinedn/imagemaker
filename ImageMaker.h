@@ -26,7 +26,7 @@ public:
      * Postcondition: An ImageMaker object will be created
      */
     ImageMaker();
-    /* Function: Constructor that takes in a filename
+    /* Function: Constructor that takes in a filename and creates an object with the data that is in the filename
      * Precondition: File name must exist
      * Postcondition: Data is stored within the object variables
      * The function throws a "File failed to open" error if file cannot be opened
@@ -45,23 +45,12 @@ public:
      */
     void LoadImage(string filename);
     /*
-     * Function: Opens image with filename and stores information into the object's member variables
-     * Precondition: File name must exist
-     * Postcondition: Data is stored within the object variables
-     * The function throws a "File failed to open" error if file cannot be opened
-     * The function throws a "Bad magic number" error if the magic number is not P3
-     * The function throws a "Width out of bounds" error if the width is negative or greater than MAX_WIDTH
-     * The function throws a "Height out of bounds" error if the height is negative or greater than MAX_HEIGHT
-     * The function throws a "Max color range not 255" error if the max color is not 255
-     * The function throws a "Color value invalid" error if any of the color values is negative or greater than 255
-     */
-    void SaveImage(string filename);
-    /*
      * Function: Stores the data of the object into a file name
      * Precondition: Width and height must have non-zero dimensions
      * Postcondition: A output file is created with magic number, width, height, max color, and RGB pixels
      * The function throws an "Image must have non-zero dimensions" error if width and height have non-zero dimensions
      */
+    void SaveImage(string filename);
 
     // Size functions
     /*
