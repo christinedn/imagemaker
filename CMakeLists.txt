@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 project(ImageMaker)
 
+set(CMAKE_CXX_STANDARD 11)
 # Increase the stack memory.  ppm images are big!
 MATH(EXPR stack_size "10 * 1024 * 1024") # 10 Mb
 # Windows settings
