@@ -43,22 +43,19 @@ void ImageMaker::LoadImage(string filename) {
         throw "File failed to open";
     }
     // read contents of file
-    while (myFile >> magic >> width >> height >> maxColor) {
-        if (magic != "P3") {
-            throw "Bad magic number";
-        }
-        if (width > MAX_WIDTH) {
-            throw "Width out of bounds";
-        }
-        if (height > MAX_HEIGHT)
-            throw "Height out of bounds";
-        if (maxColor != MAX_COLOR) {
-            throw "Max color range not 255";
-        }
-        break;
+    myFile >> magic >> width >> height >> maxColor;
+    if (magic != "P3") {
+        throw "Bad magic number";
+    }
+    if (width < 0 || width > MAX_WIDTH) {
+        throw "Width out of bounds";
+    }
+    if (height < 0 || height > MAX_HEIGHT)
+        throw "Height out of bounds";
+    if (maxColor != MAX_COLOR) {
+        throw "Max color range not 255";
     }
 
-    // start a new while loop to start storing color values in (x, y)
     for (int i = 0; i < MAX_WIDTH; i++) {
         for (int j = 0; j < MAX_HEIGHT; j++) {
             while (myFile >> pen_red >> pen_green >> pen_blue) {
@@ -73,13 +70,13 @@ void ImageMaker::LoadImage(string filename) {
         }
     }
 
-    for (int i = 0; i < MAX_WIDTH; i++) {
-        for (int j = 0; j < MAX_HEIGHT; j++) {
-            image[i][j][0] = 255;
-            image[i][j][1] = 255;
-            image[i][j][2] = 255;
-        }
-    }
+//    for (int i = 0; i < MAX_WIDTH; i++) {
+//        for (int j = 0; j < MAX_HEIGHT; j++) {
+//            image[i][j][0] = 255;
+//            image[i][j][1] = 255;
+//            image[i][j][2] = 255;
+//        }
+//    }
 }
 
 void ImageMaker::SaveImage(string filename) {
@@ -152,15 +149,93 @@ void ImageMaker::SetPenBlue(int newB) {
 }
 
 void ImageMaker::DrawPixel(int x, int y) {
+    if (!PointInBounds(x, y))
+        throw "Point out of bounds";
+    image[x][y][RED] = GetPenRed();
+    image[x][y][GREEN] = GetPenGreen();
+    image[x][y][BLUE] = GetPenBlue();
 
 }
 
 void ImageMaker::DrawRectangle(int x1, int y1, int x2, int y2) {
+    if (!PointInBounds(x1, y1) || !PointInBounds(x2, y2))
+        throw "Point out of bounds";
 
+    // draws a single pixel
+    if ((x1,y1) == (x2,y2)) {
+        DrawPixel(x1, y1);
+    }
+
+    // the two if statements below will allow the same line to be produced whether user inputs DrawLine (1, 2, 5, 3) or DrawLine(5, 3, 1, 2)
+    // to do this, find which x value is larger in the function parameters
+    int largerX, smallerX, smallerY, largerY;
+    if (x2 > x1) {
+        largerX = x2;
+        smallerX = x1;
+    }
+    if (x1 > x2) {
+        largerX = x1;
+        smallerX = x2;
+    }
+    if (y2 > y1) {
+        largerY = y2;
+        smallerY = y1;
+    }
+    if (y1 > y2) {
+        largerY = y1;
+        smallerY = y2;
+    }
+
+    for (int i = smallerX; i <= largerX; i++) {
+        for (int j = smallerY; j <= largerY; j++) {
+            DrawPixel(smallerX, smallerY);
+        }
+    }
 }
 
 void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
+    if (!PointInBounds(x1, y1) || !PointInBounds(x2, y2))
+        throw "Point out of bounds";
 
+    // draws a single pixel
+    if ((x1,y1) == (x2,y2)) {
+        DrawPixel(x1, y1);
+    }
+
+    double x3, y3;
+    double m, b;
+    // calculate slope
+    y3 = y2-y1;
+    x3 = x2-x1;
+    if (x3 == 0) {
+        // vertical slope
+        for (int i = ++y1; i < y2; i++) {
+            DrawPixel(x1, i);
+        }
+    } else {
+        m = y3/x3;
+        // calculate b using x, y coordinate and slope
+        b = y1-m*x1;
+
+        // the two if statements below will allow the same line to be produced whether user inputs DrawLine (2, 3, 6, 4) or DrawLine(6, 4, 2, 3)
+        // to do this, find which x value is larger in the function parameters
+        int largerX, smallerX;
+        if (x2 > x1) {
+            largerX = x2;
+            smallerX = x1;
+        }
+        if (x1 > x2) {
+            largerX = x1;
+            smallerX = x2;
+        }
+
+        // now that slope intercept formula is found, you can find any x, y coordinate along that line
+        for (int tempX = smallerX; tempX <= largerX; tempX++) {
+            double tempY = m*tempX+b;
+            tempY = round(tempY);
+            DrawPixel(tempX, tempY);
+        }
+    }
 }
 
 bool ImageMaker::PointInBounds(int x, int y) {
