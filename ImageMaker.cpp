@@ -162,7 +162,7 @@ void ImageMaker::DrawRectangle(int x1, int y1, int x2, int y2) {
         throw "Point out of bounds";
 
     // draws a single pixel
-    if ((x1,y1) == (x2,y2)) {
+    if (x1 == x2 && y2 == y1) {
         DrawPixel(x1, y1);
     }
 
@@ -198,7 +198,7 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
         throw "Point out of bounds";
 
     // draws a single pixel
-    if ((x1,y1) == (x2,y2)) {
+    if (x1 == x2 && y2 == y1) {
         DrawPixel(x1, y1);
     }
 
