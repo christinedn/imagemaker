@@ -19,7 +19,7 @@ ImageMaker::ImageMaker() {
 ImageMaker::ImageMaker(string filename) {
     // initialize variable image to be white
     for (int i = 0; i < MAX_WIDTH; i++) {
-        for (int j = 0; i < MAX_HEIGHT; j++) {
+        for (int j = 0; j < MAX_HEIGHT; j++) {
             image[i][j][RED] = 255;
             image[i][j][GREEN] = 255;
             image[i][j][BLUE] = 255;
