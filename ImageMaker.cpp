@@ -37,6 +37,7 @@ ImageMaker::ImageMaker(string filename) {
 void ImageMaker::LoadImage(string filename) {
     int maxColor;
     ifstream myFile;
+    myFile.open(filename);
     if (!myFile.is_open())
         throw "File failed to open";
 
