@@ -26,14 +26,11 @@ ImageMaker::ImageMaker(string filename) {
         }
     }
     // load ppm into the image matrix
-    LoadImage(filename);
+    // LoadImage(filename);
     // setting the default pen color to black (0, 0, 0)
-    SetPenRed(0);
-    SetPenGreen(0);
-    SetPenBlue(0);
-    //    pen_red = 0;
-    //    pen_green = 0;
-    //    pen_blue = 0;
+    pen_red = 0;
+    pen_green = 0;
+    pen_blue = 0;
 }
 
 void ImageMaker::LoadImage(string filename) {
@@ -68,6 +65,9 @@ void ImageMaker::LoadImage(string filename) {
                 break;
             }
         }
+        pen_red = 0;
+        pen_green = 0;
+        pen_blue = 0;
     }
 
 //    for (int i = 0; i < MAX_WIDTH; i++) {
