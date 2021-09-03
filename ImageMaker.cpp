@@ -26,57 +26,42 @@ ImageMaker::ImageMaker(string filename) {
         }
     }
     // load ppm into the image matrix
-    // LoadImage(filename);
+    LoadImage(filename);
     // setting the default pen color to black (0, 0, 0)
     pen_red = 0;
     pen_green = 0;
     pen_blue = 0;
+
 }
 
 void ImageMaker::LoadImage(string filename) {
     int maxColor;
     ifstream myFile;
-    if (!myFile.is_open()) {
+    if (!myFile.is_open())
         throw "File failed to open";
-    }
+
     // read contents of file
     myFile >> magic >> width >> height >> maxColor;
-    if (magic != "P3") {
+    if (magic != "P3")
         throw "Bad magic number";
-    }
-    if (width < 0 || width > MAX_WIDTH) {
+
+    if (width < 0 || width > MAX_WIDTH)
         throw "Width out of bounds";
-    }
+
     if (height < 0 || height > MAX_HEIGHT)
         throw "Height out of bounds";
-    if (maxColor != MAX_COLOR) {
+
+    if (maxColor != MAX_COLOR)
         throw "Max color range not 255";
-    }
 
     for (int i = 0; i < MAX_WIDTH; i++) {
         for (int j = 0; j < MAX_HEIGHT; j++) {
-            while (myFile >> pen_red >> pen_green >> pen_blue) {
-                if (pen_red < 0 || pen_red > MAX_COLOR || pen_green < 0 || pen_green > MAX_COLOR || pen_blue < 0 || pen_blue > MAX_COLOR) {
-                    throw "Color value invalid";
-                }
-                image[i][j][RED] = pen_red;
-                image[i][j][GREEN] = pen_green;
-                image[i][j][BLUE] = pen_blue;
-                break;
-            }
+            myFile >> image[i][j][RED] >> image[i][j][GREEN] >> image[i][j][BLUE];
+            if (image[i][j][RED] < 0 || image[i][j][RED] > MAX_COLOR || image[i][j][GREEN] < 0 || image[i][j][GREEN] > MAX_COLOR || image[i][j][BLUE] < 0 || image[i][j][BLUE] > MAX_COLOR)
+                throw "Color value invalid";
         }
-        pen_red = 0;
-        pen_green = 0;
-        pen_blue = 0;
     }
-
-//    for (int i = 0; i < MAX_WIDTH; i++) {
-//        for (int j = 0; j < MAX_HEIGHT; j++) {
-//            image[i][j][0] = 255;
-//            image[i][j][1] = 255;
-//            image[i][j][2] = 255;
-//        }
-//    }
+    myFile.close();
 }
 
 void ImageMaker::SaveImage(string filename) {
