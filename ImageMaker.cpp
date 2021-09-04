@@ -187,32 +187,38 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
         DrawPixel(x1, y1);
     }
 
-    double x3, y3;
-    double m, b;
+    double x3, y3, m, b;
+    // the if statements below will allow the same line to be produced whether user inputs DrawLine (2, 3, 6, 4) or DrawLine(6, 4, 2, 3)
+    // to do this, find which x value is larger in the function parameters
+    int largerX, smallerX, largerY, smallerY;
+    if (x2 > x1) {
+        largerX = x2;
+        smallerX = x1;
+    }
+    if (x1 > x2) {
+        largerX = x1;
+        smallerX = x2;
+    }
+    if (y1 > y2) {
+        largerY = y1;
+        smallerY = y2;
+    }
+    if (y2 > y1) {
+        largerY = y2;
+        smallerY = y1;
+    }
     // calculate slope
     y3 = y2-y1;
     x3 = x2-x1;
     if (x3 == 0) {
         // vertical slope
-        for (int i = ++y1; i < y2; i++) {
+        for (int i = y1; i < y2; i++) {
             DrawPixel(x1, i);
         }
     } else {
         m = (double)y3/x3;
         // calculate b using x, y coordinate and slope
         b = y1-m*x1;
-
-        // the two if statements below will allow the same line to be produced whether user inputs DrawLine (2, 3, 6, 4) or DrawLine(6, 4, 2, 3)
-        // to do this, find which x value is larger in the function parameters
-        int largerX, smallerX;
-        if (x2 > x1) {
-            largerX = x2;
-            smallerX = x1;
-        }
-        if (x1 > x2) {
-            largerX = x1;
-            smallerX = x2;
-        }
 
         // now that slope intercept formula is found, you can find any x, y coordinate along that line
         for (int tempX = smallerX; tempX <= largerX; tempX++) {
