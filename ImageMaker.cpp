@@ -136,9 +136,9 @@ void ImageMaker::SetPenBlue(int newB) {
 void ImageMaker::DrawPixel(int x, int y) {
     if (!PointInBounds(x, y))
         throw "Point out of bounds";
-    image[x][y][RED] = GetPenRed();
-    image[x][y][GREEN] = GetPenGreen();
-    image[x][y][BLUE] = GetPenBlue();
+    image[x][y][RED] = pen_red;
+    image[x][y][GREEN] = pen_green;
+    image[x][y][BLUE] = pen_blue;
 
 }
 
@@ -224,7 +224,7 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
 }
 
 bool ImageMaker::PointInBounds(int x, int y) {
-    if (x < 0 || x > width || y < 0 || y > height)
+    if (x < 0 || x > width-1 || y < 0 || y > height-1)
         return false;
     return true;
 }
