@@ -7,22 +7,22 @@ ImageMaker::ImageMaker() {
     pen_red = 0;
     pen_green = 0;
     pen_blue = 0;
-    for (int i = 0; i < MAX_WIDTH; i++) {
-        for (int j = 0; j < MAX_HEIGHT; j++) {
-            image[i][j][RED] = 255;
-            image[i][j][GREEN] = 255;
-            image[i][j][BLUE] = 255;
+    for (int y = 0; y < MAX_HEIGHT; y++) {
+        for (int x = 0; x < MAX_WIDTH; x++) {
+            image[x][y][RED] = 255;
+            image[x][y][GREEN] = 255;
+            image[x][y][BLUE] = 255;
         }
     }
 }
 
 ImageMaker::ImageMaker(string filename) {
     // initialize variable image to be white
-    for (int i = 0; i < MAX_WIDTH; i++) {
-        for (int j = 0; j < MAX_HEIGHT; j++) {
-            image[i][j][RED] = 255;
-            image[i][j][GREEN] = 255;
-            image[i][j][BLUE] = 255;
+    for (int y = 0; y < MAX_HEIGHT; y++) {
+        for (int x = 0; x < MAX_WIDTH; x++) {
+            image[x][y][RED] = 255;
+            image[x][y][GREEN] = 255;
+            image[x][y][BLUE] = 255;
         }
     }
     // load ppm into the image matrix
@@ -54,10 +54,10 @@ void ImageMaker::LoadImage(string filename) {
     if (maxColor != MAX_COLOR)
         throw "Max color range not 255";
 
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            myFile >> image[j][i][RED] >> image[j][i][GREEN] >> image[j][i][BLUE];
-            if (image[j][i][RED] < 0 || image[j][i][RED] > MAX_COLOR || image[j][i][GREEN] < 0 || image[j][i][GREEN] > MAX_COLOR || image[j][i][BLUE] < 0 || image[j][i][BLUE] > MAX_COLOR)
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            myFile >> image[x][y][RED] >> image[x][y][GREEN] >> image[x][y][BLUE];
+            if (image[x][y][RED] < 0 || image[x][y][RED] > MAX_COLOR || image[x][y][GREEN] < 0 || image[x][y][GREEN] > MAX_COLOR || image[x][y][BLUE] < 0 || image[x][y][BLUE] > MAX_COLOR)
                 throw "Color value invalid";
         }
     }
@@ -75,9 +75,9 @@ void ImageMaker::SaveImage(string filename) {
     //myFile << magic; (?)
     myFile << "P3" << endl << width << " " << height << endl << MAX_COLOR << endl;
     // write out the RGB values from the private variable "image"
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            myFile << image[j][i][RED] << " " << image[j][i][GREEN] << " " << image[j][i][BLUE] << " ";
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            myFile << image[x][y][RED] << " " << image[x][y][GREEN] << " " << image[x][y][BLUE] << " ";
         }
     }
     myFile.close();
@@ -147,7 +147,7 @@ void ImageMaker::DrawRectangle(int x1, int y1, int x2, int y2) {
         throw "Point out of bounds";
 
     // draws a single pixel
-    if (x1 == x2 && y2 == y1) {
+    if ((x1 == x2) && (y2 == y1)) {
         DrawPixel(x1, y1);
     }
 
@@ -183,7 +183,7 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
         throw "Point out of bounds";
 
     // draws a single pixel
-    if (x1 == x2 && y2 == y1) {
+    if ((x1 == x2) && (y2 == y1)) {
         DrawPixel(x1, y1);
     }
 
