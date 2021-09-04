@@ -56,8 +56,8 @@ void ImageMaker::LoadImage(string filename) {
 
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            myFile >> image[i][j][RED] >> image[i][j][GREEN] >> image[i][j][BLUE];
-            if (image[i][j][RED] < 0 || image[i][j][RED] > MAX_COLOR || image[i][j][GREEN] < 0 || image[i][j][GREEN] > MAX_COLOR || image[i][j][BLUE] < 0 || image[i][j][BLUE] > MAX_COLOR)
+            myFile >> image[j][i][RED] >> image[j][i][GREEN] >> image[j][i][BLUE];
+            if (image[j][i][RED] < 0 || image[j][i][RED] > MAX_COLOR || image[j][i][GREEN] < 0 || image[j][i][GREEN] > MAX_COLOR || image[j][i][BLUE] < 0 || image[j][i][BLUE] > MAX_COLOR)
                 throw "Color value invalid";
         }
     }
@@ -77,7 +77,7 @@ void ImageMaker::SaveImage(string filename) {
     // write out the RGB values from the private variable "image"
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            myFile << image[i][j][RED] << " " << image[i][j][GREEN] << " " << image[i][j][BLUE] << " ";
+            myFile << image[j][i][RED] << " " << image[j][i][GREEN] << " " << image[j][i][BLUE] << " ";
         }
     }
     myFile.close();
