@@ -54,8 +54,8 @@ void ImageMaker::LoadImage(string filename) {
     if (maxColor != MAX_COLOR)
         throw "Max color range not 255";
 
-    for (int i = 0; i < width; i++) {
-        for (int j = 0; j < height; j++) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
             myFile >> image[i][j][RED] >> image[i][j][GREEN] >> image[i][j][BLUE];
             if (image[i][j][RED] < 0 || image[i][j][RED] > MAX_COLOR || image[i][j][GREEN] < 0 || image[i][j][GREEN] > MAX_COLOR || image[i][j][BLUE] < 0 || image[i][j][BLUE] > MAX_COLOR)
                 throw "Color value invalid";
@@ -75,8 +75,8 @@ void ImageMaker::SaveImage(string filename) {
     //myFile << magic; (?)
     myFile << "P3" << endl << width << " " << height << endl << MAX_COLOR << endl;
     // write out the RGB values from the private variable "image"
-    for (int i = 0; i < width; i++) {
-        for (int j = 0; j < height; j++) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
             myFile << image[i][j][RED] << " " << image[i][j][GREEN] << " " << image[i][j][BLUE] << " ";
         }
     }
@@ -198,7 +198,7 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
             DrawPixel(x1, i);
         }
     } else {
-        m = y3/x3;
+        m = (double)y3/x3;
         // calculate b using x, y coordinate and slope
         b = y1-m*x1;
 
