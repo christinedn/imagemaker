@@ -149,6 +149,7 @@ void ImageMaker::DrawRectangle(int x1, int y1, int x2, int y2) {
     // draws a single pixel
     if ((x1 == x2) && (y2 == y1)) {
         DrawPixel(x1, y1);
+        return;
     }
 
     // the two if statements below will allow the same line to be produced whether user inputs DrawLine (1, 2, 5, 3) or DrawLine(5, 3, 1, 2)
@@ -185,34 +186,45 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
     // draws a single pixel
     if ((x1 == x2) && (y2 == y1)) {
         DrawPixel(x1, y1);
+        return;
     }
 
     double x3, y3, m, b;
     // the if statements below will allow the same line to be produced whether user inputs DrawLine (2, 3, 6, 4) or DrawLine(6, 4, 2, 3)
-    // to do this, find which x value is larger in the function parameters
-    int largerX, smallerX, largerY, smallerY;
+    // to do this, find which x, y value is larger in the function parameters
+    double largerX, smallerX, largerY, smallerY;
     if (x2 > x1) {
         largerX = x2;
         smallerX = x1;
     }
-    if (x1 > x2) {
+    else if (x1 > x2) {
         largerX = x1;
         smallerX = x2;
     }
-    if (y1 > y2) {
+    else if (y1 > y2) {
         largerY = y1;
         smallerY = y2;
     }
-    if (y2 > y1) {
+    else if (y2 > y1) {
         largerY = y2;
         smallerY = y1;
     }
     // calculate slope
     y3 = y2-y1;
     x3 = x2-x1;
-    if (x3 == 0) {
+    if (x3 == 0.0) {
         // vertical slope
-        for (int i = y1; i < y2; i++) {
+//        if (y1 < y2) {
+//            for (int i = y1; i <= y2; i++) {
+//                DrawPixel(x1, i);
+//            }
+//        }
+//        if (y2 < y1) {
+//            for (int i = y2; i <= y1; i++) {
+//                DrawPixel(x1, i);
+//            }
+//        }
+        for (int i = smallerY; i <= largerY; i++) {
             DrawPixel(x1, i);
         }
     } else {
