@@ -7,6 +7,7 @@ ImageMaker::ImageMaker() {
     pen_red = 0;
     pen_green = 0;
     pen_blue = 0;
+    // initialize variable image matrix to be white
     for (int y = 0; y < MAX_HEIGHT; y++) {
         for (int x = 0; x < MAX_WIDTH; x++) {
             image[x][y][RED] = 255;
@@ -17,7 +18,7 @@ ImageMaker::ImageMaker() {
 }
 
 ImageMaker::ImageMaker(string filename) {
-    // initialize variable image to be white
+    // initialize variable image matrix to be white
     for (int y = 0; y < MAX_HEIGHT; y++) {
         for (int x = 0; x < MAX_WIDTH; x++) {
             image[x][y][RED] = 255;
