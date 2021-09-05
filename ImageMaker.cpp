@@ -172,11 +172,15 @@ void ImageMaker::DrawRectangle(int x1, int y1, int x2, int y2) {
         smallerY = y2;
     }
 
-    for (int i = smallerX; i <= largerX; i++) {
-        for (int j = smallerY; j <= largerY; j++) {
-            DrawPixel(smallerX, smallerY);
-        }
-    }
+    // call DrawLine() 4 times to draw a rectangle
+    // draw the top horizontal line
+    DrawLine(smallerX, smallerY, largerX, smallerY);
+    // draw the bottom horizontal line
+    DrawLine(smallerX, largerY, largerX, largerY);
+    // draw the left vertical line
+    DrawLine(smallerX, smallerY, smallerX, largerY);
+    // draw the right vertical line
+    DrawLine(largerX, smallerY, largerX, largerY);
 }
 
 void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
