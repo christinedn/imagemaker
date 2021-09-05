@@ -152,35 +152,16 @@ void ImageMaker::DrawRectangle(int x1, int y1, int x2, int y2) {
         return;
     }
 
-    // the two if statements below will allow the same line to be produced whether user inputs DrawLine (1, 2, 5, 3) or DrawLine(5, 3, 1, 2)
-    // to do this, find which x value is larger in the function parameters
-    int largerX, smallerX, smallerY, largerY;
-    if (x2 > x1) {
-        largerX = x2;
-        smallerX = x1;
-    }
-    if (x1 > x2) {
-        largerX = x1;
-        smallerX = x2;
-    }
-    if (y2 > y1) {
-        largerY = y2;
-        smallerY = y1;
-    }
-    if (y1 > y2) {
-        largerY = y1;
-        smallerY = y2;
-    }
-
     // call DrawLine() 4 times to draw a rectangle
     // draw the top horizontal line
-    DrawLine(smallerX, smallerY, largerX, smallerY);
+    DrawLine(x1, y1, x2, y1);
     // draw the bottom horizontal line
-    DrawLine(smallerX, largerY, largerX, largerY);
+    DrawLine(x1, y2, x2, y2);
     // draw the left vertical line
-    DrawLine(smallerX, smallerY, smallerX, largerY);
+    DrawLine(x1, y1, x1, y2);
     // draw the right vertical line
-    DrawLine(largerX, smallerY, largerX, largerY);
+    DrawLine(x2, y1, x2, y2);
+
 }
 
 void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
