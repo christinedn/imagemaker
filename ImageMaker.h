@@ -46,7 +46,7 @@ public:
     void LoadImage(string filename);
     /*
      * Function: Stores the data of the object into a file name
-     * Precondition: Width and height must have non-zero dimensions
+     * Precondition: Width and height must have non-zero dimensions. Assumes that max color is 255 and magic number is P3.
      * Postcondition: A output file is created with magic number, width, height, max color, and RGB pixels
      * The function throws an "Image must have non-zero dimensions" error if width and height have non-zero dimensions
      */
@@ -131,7 +131,7 @@ public:
     void DrawPixel(int x, int y);
     /* Function: Draws a rectangle
      * Preconditon: Values x and y must be positive and less than width and height
-     * Postcondition: A rectangle will have been draw using current pen color
+     * Postcondition: A rectangle will have been drawn using current pen color
      * Function will throw a "Point out of bounds" error if either x or y is negative or greater than width and height
      */
     void DrawRectangle(int x1, int y1, int x2, int y2);
