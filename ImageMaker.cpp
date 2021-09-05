@@ -197,15 +197,15 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
         largerX = x2;
         smallerX = x1;
     }
-    else if (x1 > x2) {
+    if (x1 > x2) {
         largerX = x1;
         smallerX = x2;
     }
-    else if (y1 > y2) {
+    if (y1 > y2) {
         largerY = y1;
         smallerY = y2;
     }
-    else if (y2 > y1) {
+    if (y2 > y1) {
         largerY = y2;
         smallerY = y1;
     }
@@ -214,16 +214,6 @@ void ImageMaker::DrawLine(int x1, int y1, int x2, int y2) {
     x3 = x2-x1;
     if (x3 == 0.0) {
         // vertical slope
-//        if (y1 < y2) {
-//            for (int i = y1; i <= y2; i++) {
-//                DrawPixel(x1, i);
-//            }
-//        }
-//        if (y2 < y1) {
-//            for (int i = y2; i <= y1; i++) {
-//                DrawPixel(x1, i);
-//            }
-//        }
         for (int i = smallerY; i <= largerY; i++) {
             DrawPixel(x1, i);
         }
